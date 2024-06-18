@@ -1,10 +1,74 @@
-## NMAP
+# NMAP
 
-My default nmap scan
+### What is Nmap?
+
+Nmap (Network Mapper) is a widely used open-source network scanning tool that was originally developed to discover hosts and services on a computer network, thus creating a "map" of the network topology. It allows users to audit and explore network security, identify open ports, detect security vulnerabilities, and conduct network inventory.
+
+#### History:
+
+- **Creation**: Nmap was created by Gordon Lyon, also known by his pseudonym "Fyodor," in 1997. Lyon developed Nmap as a tool to assist in network security auditing and exploration. Initially, Nmap was released under the GNU General Public License (GPL) as free software.
+
+- **Evolution**: Over the years, Nmap has evolved significantly in functionality and capability. It has become a standard tool used by network administrators, security professionals, penetration testers, and individuals interested in network exploration.
+
+#### Features:
+
+Nmap is known for its powerful features, including:
+
+- **Port scanning**: Ability to scan a range of ports on a target machine to discover open ports and services.
+- **Version detection**: Ability to determine the version numbers and details of services running on open ports.
+- **OS detection**: Capability to infer the operating system of the target host based on network behaviors and responses.
+- **Scriptable interaction**: Nmap supports scripting engine (Nmap Scripting Engine - NSE) that allows users to write and execute scripts to automate tasks, perform advanced network discovery, and detect vulnerabilities.
+- **Performance**: Nmap is designed to be fast and efficient, capable of scanning large networks swiftly while providing detailed information about hosts and services.
+
+#### Uses:
+
+- **Network Security**: Nmap is extensively used for network security assessments, vulnerability scanning, and penetration testing. Security professionals use Nmap to identify potential vulnerabilities in systems and networks before malicious actors can exploit them.
+
+- **Network Administration**: Network administrators use Nmap to monitor network health, inventory network resources, and troubleshoot connectivity issues by identifying active hosts and services.
+
+- **Research and Education**: Nmap is also used in academic research, security training programs, and educational courses to teach network security principles, techniques, and methodologies.
+
+#### Legal and Ethical Considerations:
+
+- **Authorization**: It is important to note that using Nmap or any network scanning tool without proper authorization can be illegal and may violate laws related to unauthorized access to computer systems.
+
+- **Ethics**: Ethical considerations are crucial when using Nmap. Users should obtain permission before scanning networks or systems that they do not own or administer. Unauthorized scanning can disrupt services, violate privacy, and lead to legal consequences.
+
+
+**nmap is a very powerful tool that has a lot of uses and capabilities. These uses and capabilites do not come right out of the terminal, the user must have knowledge and scope to correctly utilize nmap to their advantage.**
+
+Here is a default scan that I find can be used in a lot of cases, but you must utilize techniques that suit the needs of your scan and what you are trying to discover. 
 ``` 
 nmap -sV -sC --scripts vuln -a <target IP>
 ```
+Here's the explanation for each component of that particular command:
 
+- **nmap**: The command-line tool used for network exploration and security auditing.
+- **-sV**: Enables version detection. Nmap will attempt to determine versions of the services running on open ports by interrogating them.
+- **-sC**: Executes default scripts against the target. These scripts are useful for gathering additional information about the services running on the target.
+- **--script vuln**: Specifies that the script named `vuln` (or scripts related to vulnerability detection) should be run. Nmap has built-in scripts that can detect various vulnerabilities in services.
+- **-a**: Enables aggressive scanning options. It enables OS detection, version detection, script scanning, and traceroute.
+- **<target IP>**: Replace `<target IP>` with the IP address of the target machine you want to scan.
+
+Your nmap scans should be **context dependent** and you should utilize techniques that will best suit your needs. 
+
+**DO NOT SCAN ANY NETWORK WITHOUT WRITTEN EXPLICIT PERMISSION**
+
+_Running an Nmap scan itself is not inherently illegal, but the legality depends on various factors including the jurisdiction you are in, the target you are scanning, and your intent behind the scan._
+
+Here are some key points to consider:
+
+- **Authorization:** Scanning a network or system without proper authorization is generally illegal. If you do not have permission from the owner of the network or system, conducting a scan can be considered unauthorized access, which is a violation of laws such as the Computer Fraud and Abuse Act (CFAA) in the United States.
+
+- **Intent:** The legality also depends on your intent. If you are conducting a scan for legitimate security testing, research, or network administration purposes with explicit permission from the owner, it is generally legal. However, scanning with malicious intent, such as attempting to exploit vulnerabilities or disrupt services, is illegal and can result in severe legal consequences.
+
+- **Privacy and Data Protection Laws:** In many jurisdictions, there are laws governing the protection of personal data and privacy. Conducting scans that collect personally identifiable information without consent may violate these laws.
+
+- **Penetration Testing:** Organizations often conduct authorized penetration tests, including using tools like Nmap, to identify vulnerabilities in their own systems. Such activities are legal when authorized and conducted within the boundaries set by the organization.
+
+- **Federal Crime:** Under certain circumstances, unauthorized scanning could potentially lead to federal charges, especially if it involves critical infrastructure, government systems, or if it causes significant damage or disruption.
+
+With that out of the way lets get into some basic scanning techniques
 ### Basic Scanning Techniques
 
 - Scan a single target: `nmap [target]`
@@ -102,3 +166,4 @@ nmap -sV -sC --scripts vuln -a <target IP>
 - **vuln**: Scripts in this category focus on vulnerability detection. They check for known vulnerabilities in services or applications running on target systems.
 
 When using Nmap's scripting engine (`--script` option), specifying a script category helps narrow down the selection of scripts to those specifically designed for that category's purpose. For example, `nmap --script vuln [target]` would run only scripts categorized under "vuln," which are designed to detect vulnerabilities in target systems.
+
